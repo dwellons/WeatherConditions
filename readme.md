@@ -93,6 +93,10 @@ Copy this link and paste it wherever it’s visible, close to where you’re usi
 
 <a href="https://www.flaticon.com/free-icons/sun" title="sun icons">Sun icons created by Good Ware - Flaticon</a>
 
+* Weather Icons Attribute:
+  Copy this link and paste it wherever it’s visible, close to where you’re using the image. If that’s not possible, place it at the footer of your website, blog or newsletter, or in the credits section.
+
+<a href="https://www.flaticon.com/free-icons/cold" title="cold icons">Cold icons created by kmg design - Flaticon</a>
 
 
 

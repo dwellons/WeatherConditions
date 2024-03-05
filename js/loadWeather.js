@@ -50,15 +50,23 @@ const fetchZipCode = inlineEvent => {
 const getLocation = inputZipCode => {
 
     let url = "http://api.geonames.org/postalCodeSearchJSON?username=" +
-            username + "&postalcode=" + inputZipCode + "&country=" + country;
+        username + "&postalcode=" + inputZipCode + "&country=" + country;
+
+    console.log(url);
+
     let xhr = new XMLHttpRequest();
 
     xhr.open("get", url);
+
+    console.log(xhr);
 
     xhr.onreadystatechange = () => {
         if(xhr.readyState == 4) {
 
             let data = JSON.parse(xhr.responseText);
+
+            console.log(data);
+
             let lat = data.postalCodes[0].lat;
             let lng = data.postalCodes[0].lng;
 
@@ -78,7 +86,7 @@ const getLocation = inputZipCode => {
 const getWeather = (lat, lng) => {
 
     let url = "http://api.geonames.org/findNearByWeatherJSON?username=" +
-            username + "&lat=" + lat + "&lng=" + lng;
+        username + "&lat=" + lat + "&lng=" + lng;
     let xhr = new XMLHttpRequest();
 
     xhr.open("get", url);
@@ -100,8 +108,13 @@ const getWeather = (lat, lng) => {
             let tempFar = 0.00;
             tempFar = (9/5 * temp) + 32;
 
+            // Convert wind from Knots to MPH
+            let windMPH = 0.00;
+            windMPH = wind * 1.151;
+
             // Call the formatTotal method on the Fahrenheit temperature.
             tempFar = formatTotal(tempFar);
+            windMPH = formatTotal(windMPH);
 
             // Displays the results in the DIV labeled results.
             document.getElementById("results").innerHTML =
@@ -115,21 +128,28 @@ const getWeather = (lat, lng) => {
                 "<td id= 'tempOut'>" + tempFar + "* F</td></tr>" +
 
                 "<tr><th>Wind Speed / Direction</th>" +
-                "<td id='windOut'>" + wind + " mph, " + heading + "</td></tr>" +
+                "<td id='windOut'>" + windMPH + " mph, " + heading + "</td></tr>" +
 
                 "</table>";
 
-            // If temperature is above 83 degrees Fahrenheit, display sun icon.
+            /*
+             * If temperature is above 83 degrees Fahrenheit, display sun icon.
+             * If temperature is below 34 degrees, display snowflake icon.
+             */
             if (tempFar >= 83) {
                 document.getElementById("tempOut").innerHTML =
                     "<tr><td id= 'tempOut'>" + tempFar + "* F" + "</td>" +
                     "<td><img src='./resources/images/sun.png' id='sunImage'/></td></tr>";
+            } else if (tempFar <= 34) {
+                document.getElementById("tempOut").innerHTML =
+                    "<tr><td id= 'tempOut'>" + tempFar + "* F" + "</td>" +
+                    "<td><img src='./resources/images/snowflake.png' id='snowFlakeImage'/></td></tr>";
             }
 
             // If wind is above 15mph, display a wind icon.
-            if (wind >= 15) {
+            if (windMPH >= 15) {
                 document.getElementById("windOut").innerHTML =
-                    "<td>" + wind + " mph, " + heading + "</td>" +
+                    "<td>" + windMPH + " mph, " + heading + "</td>" +
                     "<td><img src='./resources/images/wind.png' id='windImage'/></td></tr>";
             }
         }
@@ -157,7 +177,7 @@ const formatTotal = amount => {
  */
 const calculateHeading = windDirection => {
 
-    if (windDirection >= 0 && windDirection <= 22.4) {
+    if (windDirection >= 0 && windDirection <= 22.4 || windDirection >= 337.5 && windDirection <= 359.9) {
         heading = "North"
     } else if (windDirection >= 22.5 && windDirection <= 67.4) {
         heading = "North East"

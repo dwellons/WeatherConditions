@@ -119,8 +119,15 @@ p {
     float: right;
 }
 
+#snowflakeImage {
+    width: 10%;
+    float: right;
+}
+
 #windImage {
     width: 10%;
     float: right;
 }
+
+
 
