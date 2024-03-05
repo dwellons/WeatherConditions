@@ -68,7 +68,7 @@ conditions.
 * The results are then displayed in a table to the user.
 
 ### How I calculated the Heading
-* The heading value is returned as a degree value, with the possibility of 0-360 degrees. I know that 0 degrees is North, 90 degrees is east, 180 degrees is south and 270 degrees is west. I found the value for the remaining directions (NE, SE, SW, NW). Knowing these values, I can determine a range each value has, and divide them evenly throughout the 0-360 degree range. 
+* The heading value is returned as a degree value, with the possibility of 0-360 degrees. I know that 0 degrees is North, 90 degrees is east, 180 degrees is south and 270 degrees is west. I found the value for the remaining main headings (NE, SE, SW, NW). Knowing these values, I can determine a degree range each value has, and divide them evenly throughout the 0-360 degree range. 
 
 ### What did I Learn?
 * Javascript Event Handling
@@ -82,6 +82,12 @@ https://pxhere.com/en/photo/564739
 
 * REGEX 5 digit zip code
 https://regexlib.com/UserPatterns.aspx?authorId=26c277f9-61b2-4bf5-bb70-106880138842&AspxAutoDetectCookieSupport=1
+
+* Celsius to Fahrenheit Conversion Formula
+  https://gmatclub.com/forum/the-formula-f-9-5-c-32-gives-the-relationship-between-the-temperatu-257565.html
+
+* Knots to MPH
+  https://www.cruisecritic.com/articles/knots-to-mph-how-fast-is-a-knot-and-more-questions
 
 * Weather Icons Attribute:
 Copy this link and paste it wherever it’s visible, close to where you’re using the image. If that’s not possible, place it at the footer of your website, blog or newsletter, or in the credits section.
